@@ -1,50 +1,49 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { fetchUserProfile } from '../utils/api'
+import { fetchUsersByNameSnippet } from '../utils/api'
 
-// function searchReducer (state, action) {
-//     switch (action.type) {
-//         case 'fetch':
-//             return {
-//                 ...state,
-//                 loading: true
-//             }
-//         case 'success':
-//             return {
-//                 users: action.data,
-//                 loading: false,
-//                 error: null
-//             }
-//         case 'error':
-//             return {
-//                 ...state,
-//                 error: 'Fetch failed.',
-//                 loading: false
-//             }
-//     }
-// }
+function searchReducer (state, action) {
+    switch (action.type) {
+        case 'fetch':
+            return {
+                ...state,
+                loading: true
+            }
+        case 'success':
+            return {
+                users: action.data,
+                loading: false,
+                error: null
+            }
+        case 'error':
+            return {
+                ...state,
+                error: 'Fetch failed.',
+                loading: false
+            }
+    }
+}
 
 function Search() {
     const [username, setUsername] = React.useState('')
-    const [userDetails, setUserDetails] = React.useState(null)
     
-    // const [state, dispatch] = React.useReducer(
-    //     searchReducer,
-    //     { 
-    //         users: [],
-    //         loading: true,
-    //         error: null
-    //     }
-    // )
+    const [state, dispatch] = React.useReducer(
+        searchReducer,
+        { 
+            users: [],
+            loading: true,
+            error: null
+        }
+    )
 
     const handleChange = (event) => setUsername(event.target.value)
 
     const makeFetch = (e) => {
         e.preventDefault()
-        
-        fetchUserProfile(username)
-            .then((data) => setUserDetails(data))
-            .catch((e) => console.log('fetch failed'))
+
+        fetchUsersByNameSnippet(username)
+            .then((data) => dispatch({ type: 'success', data }))
+            .catch((error) => dispatch({ type: 'error', error }))
     }
 
     return (
@@ -69,9 +68,9 @@ function Search() {
                 </button>
             </div>
 
-            {userDetails &&
+            {state.users.length != 0 &&
                 <div>
-                    {console.log(userDetails)}
+                    {console.log(state.users)}
                 </div>
             }
         </React.Fragment>
