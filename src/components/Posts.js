@@ -4,9 +4,6 @@ import PropTypes from 'prop-types'
 import { FaUser, FaCompass, FaBriefcase, FaBook, FaUserFriends, FaUserPlus, FaTwitter, FaStar } from 'react-icons/fa'
 
 function Posts ({ posts }) {
-    const [currentPage, setCurrentPage] = React.useState(1)
-    const [postsPerPage, setPostsPerPage] = React.useState(10)
-    
     console.log(posts)
     return (
         <ul className='grid space-around'>

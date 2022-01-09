@@ -1,19 +1,41 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Posts from './Posts'
+import Pagination from './Pagination'
 import { fetchMultipleUsersGQL } from '../utils/api'
 
 function Search() {
     const [username, setUsername] = React.useState('')
-
+    const [currentPage, setCurrentPage] = React.useState(1)
+    const [postsPerPage, setPostsPerPage] = React.useState(12)
+    
     const [state, dispatch] = React.useReducer(
         searchReducer,
         {
-            users: null,
+            results: null,
             loading: false,
             error: null
         }
     )
+
+    // Get current posts
+    const indexOfLastPost = currentPage * postsPerPage
+    const indexOfFirstPost = indexOfLastPost - postsPerPage
+    const currentPosts = state.results ? state.results.slice(indexOfFirstPost, indexOfLastPost) : null
+
+    // Change page
+    const onPageChange = (pageNumber) => {
+        if (pageNumber === 'left') {
+            if (currentPage !== 1) {
+                setCurrentPage((currentPage) => currentPage -= 1)
+            }
+        } else if (pageNumber === 'right') {
+            if (currentPage !== Math.ceil(state.returnCount/postsPerPage)) {
+                setCurrentPage((currentPage) => currentPage += 1)
+            }  
+        } else {
+            setCurrentPage(pageNumber)
+        }
+    }
 
     // Handle change in input value
     const handleInputChange = (event) => setUsername(event.target.value)
@@ -35,7 +57,7 @@ function Search() {
                 }
             case 'success':
                 return {
-                    users: action.data.data.search.edges,
+                    results: action.data.data.search.edges,
                     returnCount: action.data.data.search.userCount,
                     loading: false,
                     error: null
@@ -87,8 +109,14 @@ function Search() {
                     {state.returnCount} users found!
                 </div>
             }
-            {state.users &&
-                <Posts posts={state.users} />
+            {state.results &&
+                <div>
+                    <Posts posts={currentPosts} />
+                    <Pagination 
+                        postsPerPage={postsPerPage} 
+                        totalPosts={state.returnCount} 
+                        onPageChange={onPageChange} />
+                </div>
             }
         </React.Fragment>
     );
