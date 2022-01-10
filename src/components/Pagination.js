@@ -18,14 +18,6 @@ function Pagination({ postsPerPage = 10, totalPosts, onPageChange, siblingCount 
         return null
     }
 
-    const onNext = () => {
-        onPageChange(currentPage + 1)
-    }
-
-    const onPrevious = () => {
-        onPageChange(currentPage - 1)
-    }
-
     return (
         <nav className='flex-center'>
             <ul className={`pagination row ${className}`}>
@@ -38,15 +30,18 @@ function Pagination({ postsPerPage = 10, totalPosts, onPageChange, siblingCount 
                 </li>
                 {paginationRange.map((pageNumber, index) => {
                     if (pageNumber === '...') {
-                        return <li key={index} className='pagination-item dots'>&#8230;</li>
+                        return (
+                            <li key={index} className='pagination-item dots'>
+                                &#8230;
+                            </li>
+                        )
                     }
-
                     return (
                         <li
                             key={index}
                             className={`pagination-item ${pageNumber === currentPage ? 'selected' : ''}`}
                             onClick={() => onPageChange(pageNumber)}>
-                                {pageNumber}
+                            {pageNumber}
                         </li>
                     )
                 })}

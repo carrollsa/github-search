@@ -9,7 +9,6 @@ function Posts({ posts }) {
         <ul className='grid space-around'>
             {posts.map((post) => {
                 if (post.node.login) {
-                    // Is this a little wonky? Do you think there's a way to do this more cleanly?
                     const { login, avatarUrl, url, name, company, location, bio, twitterUsername } = post.node
                     const followers = post.node.followers.totalCount
                     const following = post.node.following.totalCount

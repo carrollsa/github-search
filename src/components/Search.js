@@ -19,12 +19,12 @@ function Search() {
         }
     )
 
-    // Get current posts
+    // Get currently rendered posts
     const indexOfLastPost = currentPage * postsPerPage
     const indexOfFirstPost = indexOfLastPost - postsPerPage
     const currentPosts = state.results ? state.results.slice(indexOfFirstPost, indexOfLastPost) : null
 
-    // Change page
+    // Change page in paginated search results
     const onPageChange = (pageNumber) => {
         if (pageNumber === 'left') {
             if (currentPage !== 1) {
@@ -39,7 +39,6 @@ function Search() {
         }
     }
 
-    // Handle change in input value
     const handleInputChange = (event) => setUsername(event.target.value)
 
     const handleSearchClick = (e) => {
