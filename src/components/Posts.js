@@ -15,7 +15,7 @@ function Posts({ posts }) {
                     const starredRepos = post.node.starredRepositories.totalCount
 
                     return (
-                        <li key={post.id}>
+                        <li key={login}>
                             <Card
                                 header={login}
                                 avatar={avatarUrl}
@@ -25,25 +25,25 @@ function Posts({ posts }) {
                                 <ul className='post-list'>
                                     <div className='row followers'>
                                         <Tooltip text="Number of followers">
-                                            <li key='followers'>
+                                            <li key={`${login}-followers`}>
                                                 <FaUserFriends color='#E0D1A6' size={22} />{followers}
                                             </li>
                                         </Tooltip>
                                         <Tooltip text="Number followed">
-                                            <li key='following'>
+                                        <li key={`${login}-following`}>
                                                 <FaUserPlus color='#7AD7F0' size={22} />{following}
                                             </li>
                                         </Tooltip>
                                     </div>
                                     {name &&
-                                        <li key={name}>
+                                        <li key={`${login}-${name}`}>
                                             <FaUser color='rgb(239, 115, 115)' size={22} />
                                             {name}
                                         </li>
                                     }
                                     {company &&
                                         <Tooltip text="Workplace">
-                                            <li key={company}>
+                                            <li key={`${login}-${company}`}>
                                                 <FaBriefcase color='#795548' size={22} />
                                                 {company}
                                             </li>
@@ -51,7 +51,7 @@ function Posts({ posts }) {
                                     }
                                     {location &&
                                         <Tooltip text='Location'>
-                                            <li key={location}>
+                                            <li key={`${login}-${location}`}>
                                                 <FaCompass color='rgb(144, 115, 255)' size={22} />
                                                 {location}
                                             </li>
@@ -59,7 +59,7 @@ function Posts({ posts }) {
                                     }
                                     {bio &&
                                         <Tooltip text='Bio' >
-                                            <li key={bio}>
+                                            <li key={`${login}-${bio}`}>
                                                 <FaBook className='bio-icon' color='172, 209, 175' size={22} />
                                                 {bio.length > 75 ? bio.slice(0, 75) + '...' : bio}
                                             </li>
@@ -67,14 +67,14 @@ function Posts({ posts }) {
                                     }
                                     {twitterUsername &&
                                         <Tooltip text='Twitter username'>
-                                            <li key={twitterUsername}>
+                                            <li key={`${login}-${twitterUsername}`}>
                                                 <FaTwitter color='rgb(0, 191, 255)' size={22} />
                                                 {twitterUsername}
                                             </li>
                                         </Tooltip>
                                     }
                                     <Tooltip text='Starred repos'>
-                                        <li key='starred-repos'>
+                                        <li key={`${login}-starred-repos`}>
                                             <FaStar color='#AA8F00' size={22} />
                                             {starredRepos}
                                         </li>
