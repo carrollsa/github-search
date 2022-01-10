@@ -73,6 +73,7 @@ Requirements included:
 * Double render of Pagination component
 	* I wanted to display the pagination component both above and below the results but did not want to perform the operations within it twice. I experimented with trying to memoize it but could not find a way to not duplicate the rendering operation. I have not used Redux, but I believe it or some other sort of state-management tool could be used to aid in this.
 * There is a point between the fetch and the rendering of `<Posts />` where the `users` prop passed in is undefined. I only knew of it from PropTypes, but I did not have time to figure out when `<Posts />` was trying to render without the appropriate props. This error did not cause any issues with the current application, but I would like to address it in the future.
+* It's small, but the color on the book icon in the rendering does not show up as intended. This appeared when I added `flex-shrink: 0` to solve an issue with the book icon always shrinking. I'm not sure why this made it so there could be no coloring, but I preferred the black icon to the tiny book.
 
 ---
 <a name="improvements"/>
