@@ -60,8 +60,10 @@ Requirements included:
 
 1. Clone the repository with `$ git clone https://github.com/carrollsa/github-search`
 2. `cd` into new folder and install dependencies with `npm install`
-3. Run project with `npm run start`
-4. Visit locally at http://localhost:3000/
+3. Obtain a GitHub API access token
+4. Create a properties.js file mirroring properties_sample.js and substitute in your token to have full access to the API and avoid rate-limiting
+5. Run project with `npm run start`
+6. Visit locally at http://localhost:3000/
 
 
 ---

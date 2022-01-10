@@ -1,5 +1,7 @@
 properties.js
 bfg-1.14.0.jar
+.git.bfg-report/
+README.md.backup
 
 # dependencies
 /node_modules
