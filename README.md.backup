@@ -44,14 +44,14 @@ Requirements included:
 ### New tools and concepts explored
 * GraphQL
 * Pagination
-* Accessible color scheming
+* Attempting accessible color scheming
 
 ---
 <a name="challenges"/>
 
 ## Challenges
-* Learning to properly structure a GraphQL query took some time, but I'm glad I did it. I fetched from the regular REST endpoints originally, but what I was finding took an original query to return basic details, and then separate queries for specifics about users. Although I was convinced there had to be a better way using REST, the GraphQL API made it a lot simpler. 
-* Manually implementing pagination took some time, but I felt as it was my first time paginating search results, I would understand better if I went through the process without using a library. In the future, I may use a library to speed things up.
+* Learning to properly structure a GraphQL query took some time, but I'm glad I did it. I originally fetched from the regular REST endpoints, but what I was finding took separate queries to return bulk users and then their specific info. Although I was convinced there had to be a better way using REST, the GraphQL API made it a lot simpler. 
+* Manually implementing pagination took some time, but I felt, as it was my first time paginating search results, I would understand better if I went through the process without using a library. In the future, I may use a library to speed things up.
 
 ---
 <a name="installation"/>
@@ -71,7 +71,7 @@ Requirements included:
 
 ## Known Issues
 * Double render of Pagination component
-	* I wanted to display the pagination component both above and below the results but did not want to perform the operations within it twice. I experimented with trying to memoize it but could not find a way to not duplicate the rendering operation. I have not used Redux, but I believe it some other sort of state-management tool could be used to aid in this.
+	* I wanted to display the pagination component both above and below the results but did not want to perform the operations within it twice. I experimented with trying to memoize it but could not find a way to not duplicate the rendering operation. I have not used Redux, but I believe it or some other sort of state-management tool could be used to aid in this.
 * There is a point between the fetch and the rendering of `<Posts />` where the `users` prop passed in is undefined. I only knew of it from PropTypes, but I did not have time to figure out when `<Posts />` was trying to render without the appropriate props. This error did not cause any issues with the current application, but I would like to address it in the future.
 
 ---
@@ -81,11 +81,11 @@ Requirements included:
 
 * Add a posts per page selection
 * Add a dark theme
-	- This one is fairly simple, and I've implemented it before, but I was hesitant to try to do so here, as I would want to make sure the dark scheme retained the same contrast required to meet accessibility standards. Admittedly, I am new to this, and I am not certain I met them exactly. 
+	- This one is fairly simple, and I've implemented it before, but I was hesitant to try to do so here, as I would want to make sure the dark color scheme retained the same contrast required to meet accessibility standards. Admittedly, I am new to this, and I am not certain I met them exactly. 
 * Add simple animations for hovering over pages, cards, etc.
 * Explore further levels of accessibility including greater consideration for screen readers
 * Explore fetching further pages from the GraphQL query
-	- The current query returns the maximum allowed by GitHub of 100 results. I did look into this a bit and structured the query so that it returns page info. This would allow storing of the `hasNextPage` and `endCursor` values which can be used within a further query to fetch the next 100 results. I think I could get this working without too much trouble, but I felt it was outside the scope of this project.
+	- The current query returns the maximum 100 results allowed by Github. I did look into this a bit and structured the query so that it returns page info. This would allow storing of the `hasNextPage` and `endCursor` values, the latter of which which can be used within a further query to fetch the next 100 results. I think I could get this working without too much trouble, but I felt it was outside the scope of this project.
 * Implement thorough automated testing
 	- I had wanted to explore this, but time got the better of me. I have a project written in Java that includes thorough unit testing with JUnit, but I have not yet done frontend testing. I would really like to explore this idea soon.
 
