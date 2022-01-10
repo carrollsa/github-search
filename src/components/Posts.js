@@ -3,8 +3,7 @@ import Card from './Card'
 import PropTypes from 'prop-types'
 import { FaUser, FaCompass, FaBriefcase, FaBook, FaUserFriends, FaUserPlus, FaTwitter, FaStar } from 'react-icons/fa'
 
-function Posts ({ posts }) {
-    console.log(posts)
+function Posts({ posts }) {
     return (
         <ul className='grid space-around'>
             {posts.map((post) => {
@@ -22,51 +21,52 @@ function Posts ({ posts }) {
                                 avatar={avatarUrl}
                                 href={url}
                             />
-                            <ul className='card-list'>
-                                <li>
-                                    <a href={url}>
-                                        {login}
-                                    </a>
-                                </li>
-                                {name &&
-                                    <li>
-                                        <FaUser color='rgb(239, 115, 115)' size={22} />
-                                        {name}
+                            <div className='post-details'>
+                                <ul className='post-list'>
+                                    <div className='row followers'>
+                                        <li key='followers'>
+                                            <FaUserFriends color='#E0D1A6' size={22} />{followers}
+                                        </li>
+                                        <li key='following'>
+                                            <FaUserPlus color='#7AD7F0' size={22} />{following}
+                                        </li>
+                                    </div>
+                                    {name &&
+                                        <li key={name}>
+                                            <FaUser color='rgb(239, 115, 115)' size={22} />
+                                            {name}
+                                        </li>
+                                    }
+                                    {company &&
+                                        <li key={company}>
+                                            <FaBriefcase color='#795548' size={22} />
+                                            {company}
+                                        </li>
+                                    }
+                                    {location &&
+                                        <li key={location}>
+                                            <FaCompass color='rgb(144, 115, 255)' size={22} />
+                                            {location}
+                                        </li>
+                                    }
+                                    {bio &&
+                                        <li key={bio}>
+                                            <FaBook className='bio-icon' color='172, 209, 175' size={22} />
+                                            {bio.length > 75 ? bio.slice(0, 75) + '...' : bio}
+                                        </li>
+                                    }
+                                    {twitterUsername &&
+                                        <li key={twitterUsername}>
+                                            <FaTwitter color='rgb(0, 191, 255)' size={22} />
+                                            {twitterUsername}
+                                        </li>
+                                    }
+                                    <li key='starred-repos'>
+                                        <FaStar color='#AA8F00' size={22} />
+                                        {starredRepos}
                                     </li>
-                                }
-                                {company &&
-                                    <li>
-                                        <FaBriefcase color='#795548' size={22} />
-                                        {company}
-                                    </li>
-                                }
-                                {location &&
-                                    <li>
-                                        <FaCompass color='rgb(144, 115, 255)' size={22} />
-                                        {location}
-                                    </li>
-                                }
-                                {bio &&
-                                    <li>
-                                        <FaBook color='rgb(172, 209, 175)' size={22} />
-                                        {bio}
-                                    </li>
-                                }
-                                <li>
-                                    <FaUserFriends color='#E0D1A6' size={22}/>{followers}
-                                    <FaUserPlus color='#7AD7F0' size={22}/>{following}
-                                </li>
-                                {twitterUsername &&
-                                    <li>
-                                        <FaTwitter color='rgb(0, 191, 255)' size={22} />
-                                        {twitterUsername}
-                                    </li>
-                                }
-                                <li>
-                                    <FaStar color='#AA8F00' size={22} />
-                                    {starredRepos}
-                                </li>
-                            </ul>
+                                </ul>
+                            </div>
                         </li>
                     )
                 }

@@ -1,33 +1,36 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { fetchUserDetails } from '../utils/api'
 
-function Card({ header, avatar, href }) {
+function Card({ header, avatar, subheader, href }) {
 
     return (
         <div className='card'>
-            <h4 className='header-lg center-text'>
-                {header}
-            </h4>
-            <img
-                className='avatar'
-                src={avatar}
-                alt={`Avatar for ${header}`}
-            />
-            <h2 className='center-text'>
-                <a className='link' href={href}
-                    
-                />
-            </h2>
-            <div>
-                {href}
-            </div>
+            <a className='plain-text' href={href}>
+                <h4 className='header-lg center-text'>
+                    {header}
+                </h4>
+                {avatar &&
+                    <img
+                        className='avatar'
+                        src={avatar}
+                        alt={`Avatar for ${header}`}
+                    />
+                }
+            </a>
+            {subheader &&
+                <h2 className='center-text'>
+                    {subheader}
+                </h2>
+            }
         </div>
     )
 }
 
 export default Card
 
-// Card.propTypes = {
-//     user: PropTypes.string.isRequired
-// }
+Card.propTypes = {
+    header: PropTypes.string.isRequired,
+    avatar: PropTypes.string,
+    subheader: PropTypes.string,
+    href: PropTypes.string
+}

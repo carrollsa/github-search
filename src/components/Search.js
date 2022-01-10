@@ -6,8 +6,8 @@ import { fetchMultipleUsersGQL } from '../utils/api'
 function Search() {
     const [username, setUsername] = React.useState('')
     const [currentPage, setCurrentPage] = React.useState(1)
-    const [postsPerPage, setPostsPerPage] = React.useState(12)
-    
+    const [postsPerPage, setPostsPerPage] = React.useState(10)
+
     const [state, dispatch] = React.useReducer(
         searchReducer,
         {
@@ -29,9 +29,9 @@ function Search() {
                 setCurrentPage((currentPage) => currentPage -= 1)
             }
         } else if (pageNumber === 'right') {
-            if (currentPage !== Math.ceil(state.returnCount/postsPerPage)) {
+            if (currentPage !== Math.ceil(state.returnCount / postsPerPage)) {
                 setCurrentPage((currentPage) => currentPage += 1)
-            }  
+            }
         } else {
             setCurrentPage(pageNumber)
         }
@@ -79,45 +79,48 @@ function Search() {
 
     return (
         <React.Fragment>
-            <div className="App">
-                <input
-                    type='text'
-                    id='username'
-                    className='input'
-                    placeholder='Search GitHub'
-                    autoComplete='off'
-                    value={username}
-                    onChange={handleInputChange}
-                    onKeyDown={handleInputKeyDown}
-                />
-                <button
-                    className='btn'
-                    type='button'
-                    disabled={!username}
-                    onClick={handleSearchClick}
-                >
-                    Search
-                </button>
+            <div className='app'>
+                <div className='row search'>
+                    <input
+                        type='text'
+                        id='username'
+                        placeholder='Search GitHub'
+                        autoComplete='off'
+                        value={username}
+                        onChange={handleInputChange}
+                        onKeyDown={handleInputKeyDown}
+                    />
+                    <button
+                        className='btn'
+                        type='button'
+                        disabled={!username}
+                        onClick={handleSearchClick}
+                    >
+                        Search
+                    </button>
+                </div>
+                {state.error &&
+                    <div className='error'>
+                        {state.error}
+                    </div>
+                }
+                {state.returnCount &&
+                    <div className='center-text header-lg'>
+                        {state.returnCount} users found! {state.returnCount > 100 ? 'Displaying first 100 results' : ''}
+                    </div>
+                }
+                {state.results &&
+                    <div>
+                        <Posts posts={currentPosts} />
+                        <Pagination
+                            postsPerPage={postsPerPage}
+                            totalPosts={state.returnCount > 100 ? 100 : state.returnCount}
+                            onPageChange={onPageChange}
+                            currentPage={currentPage}
+                        />
+                    </div>
+                }
             </div>
-            {state.error &&
-                <div className='error'>
-                    {state.error}
-                </div>
-            }
-            {state.returnCount &&
-                <div>
-                    {state.returnCount} users found!
-                </div>
-            }
-            {state.results &&
-                <div>
-                    <Posts posts={currentPosts} />
-                    <Pagination 
-                        postsPerPage={postsPerPage} 
-                        totalPosts={state.returnCount} 
-                        onPageChange={onPageChange} />
-                </div>
-            }
         </React.Fragment>
     );
 }

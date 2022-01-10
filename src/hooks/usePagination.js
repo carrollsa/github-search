@@ -50,7 +50,5 @@ export default function usePagination ({ totalCount, pageSize, siblingCount = 1,
         }
     }, [totalCount, pageSize, siblingCount, currentPage])
 
-    console.log(paginationRange)
-
     return paginationRange
 }
