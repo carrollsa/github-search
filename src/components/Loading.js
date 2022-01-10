@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+//  Borrowed from a prior project I made for a React course from Tyler McGinnis
 const styles = {
     content: {
         fontSize: '35px',

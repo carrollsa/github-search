@@ -82,6 +82,14 @@ function Search() {
         }
     }
 
+    const PaginationComponent =
+        <Pagination
+            postsPerPage={postsPerPage}
+            totalPosts={state.returnCount > 100 ? 100 : state.returnCount}
+            onPageChange={onPageChange}
+            currentPage={currentPage}
+        />
+
     return (
         <React.Fragment>
             <div className='app'>
@@ -123,19 +131,9 @@ function Search() {
                             {state.returnCount} users found! {state.returnCount > 100 && 'Displaying first 100 results.'}
                         </div>
                         <div>
-                            <Pagination
-                                postsPerPage={postsPerPage}
-                                totalPosts={state.returnCount > 100 ? 100 : state.returnCount}
-                                onPageChange={onPageChange}
-                                currentPage={currentPage}
-                            />
+                            {PaginationComponent}
                             <Posts posts={currentPosts} />
-                            <Pagination
-                                postsPerPage={postsPerPage}
-                                totalPosts={state.returnCount > 100 ? 100 : state.returnCount}
-                                onPageChange={onPageChange}
-                                currentPage={currentPage}
-                            />
+                            {PaginationComponent}
                         </div>
                     </React.Fragment>
                 }

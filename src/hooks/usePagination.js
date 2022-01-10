@@ -1,5 +1,7 @@
 import React from 'react'
 
+
+//  Heavily borrowed from a FreeCodeCamp tutorial 
 export default function usePagination ({ totalCount, pageSize, siblingCount = 1, currentPage }) {
     function range(start, end) {
         let output = []
