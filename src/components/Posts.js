@@ -26,25 +26,25 @@ function Posts({ posts }) {
                                     <div className='row followers'>
                                         <Tooltip text="Number of followers">
                                             <li key={`${login}-followers`}>
-                                                <FaUserFriends color='#E0D1A6' size={22} />{followers}
+                                                <FaUserFriends color='#008000' size={22} />{followers}
                                             </li>
                                         </Tooltip>
                                         <Tooltip text="Number followed">
                                         <li key={`${login}-following`}>
-                                                <FaUserPlus color='#7AD7F0' size={22} />{following}
+                                                <FaUserPlus color='#AA5D00' size={22} />{following}
                                             </li>
                                         </Tooltip>
                                     </div>
                                     {name &&
                                         <li key={`${login}-${name}`}>
-                                            <FaUser color='rgb(239, 115, 115)' size={22} />
+                                            <FaUser color='#DC143C' size={22} />
                                             {name}
                                         </li>
                                     }
                                     {company &&
                                         <Tooltip text="Workplace">
                                             <li key={`${login}-${company}`}>
-                                                <FaBriefcase color='#795548' size={22} />
+                                                <FaBriefcase color='#914F15' size={22} />
                                                 {company}
                                             </li>
                                         </Tooltip>
@@ -52,7 +52,7 @@ function Posts({ posts }) {
                                     {location &&
                                         <Tooltip text='Location'>
                                             <li key={`${login}-${location}`}>
-                                                <FaCompass color='rgb(144, 115, 255)' size={22} />
+                                                <FaCompass color='#886288' size={22} />
                                                 {location}
                                             </li>
                                         </Tooltip>

@@ -10,11 +10,11 @@ body {
 
 .app {
     background-color: #FFFFFF;
-    color:#36013F;
+    color:#360036;
 }
 
 .search {
-    background-color: #36013F;
+    background-color: #360036;
     height: 100px;
     align-items: center;
     justify-content: center;
@@ -105,7 +105,7 @@ li {
 }
 
 .card h4 {
-    color: #5A59B6;
+    color: #765AB0;
     font-weight: bold;
 }
 
@@ -156,7 +156,7 @@ li {
     height: 30px;
     padding: 8px;
 
-    border: 5px solid #533273;
+    border: 5px solid #674172;
     text-align: center;
     display: flex;
     align-items: center;
