@@ -1,6 +1,7 @@
 import React from 'react'
 import Posts from './Posts'
 import Pagination from './Pagination'
+import Loading from './Loading'
 import { fetchMultipleUsersGQL } from '../utils/api'
 import { GoMarkGithub } from 'react-icons/go'
 
@@ -44,6 +45,8 @@ function Search() {
     const handleSearchClick = (e) => {
         e.preventDefault()
 
+        dispatch({ type: 'fetch' })
+
         fetchMultipleUsersGQL(username)
             .then((data) => dispatch({ type: 'success', data }))
             .catch((error) => dispatch({ type: 'error', error }))
@@ -66,9 +69,11 @@ function Search() {
             case 'error':
                 return {
                     ...state,
-                    error: 'Fetch failed.',
+                    error: action.errors.message,
                     loading: false
                 }
+            default:
+                throw new Error(`Action ${action.type} is not supported.`)
         }
     }
 
@@ -82,7 +87,7 @@ function Search() {
         <React.Fragment>
             <div className='app'>
                 <div className='row search'>
-                    <GoMarkGithub size={50} color='FFFFFF'/>
+                    <GoMarkGithub size={50} color='FFFFFF' />
                     <span>
                         Search for users via the <a href='https://docs.github.com/en/graphql' target='_blank'>Github API</a>
                     </span>
@@ -109,21 +114,31 @@ function Search() {
                         {state.error}
                     </div>
                 }
-                {state.returnCount &&
-                    <div className='center-text header-lg'>
-                        {state.returnCount} users found! {state.returnCount > 100 ? 'Displaying first 100 results' : ''}
+                {state.loading
+                    ? <div>
+                        <Loading />
                     </div>
-                }
-                {state.results &&
-                    <div>
-                        <Pagination
-                            postsPerPage={postsPerPage}
-                            totalPosts={state.returnCount > 100 ? 100 : state.returnCount}
-                            onPageChange={onPageChange}
-                            currentPage={currentPage}
-                        />
-                        <Posts posts={currentPosts} />
-                    </div>
+                    : state.returnCount &&
+                    <React.Fragment>
+                        <div className='center-text header-lg'>
+                            {state.returnCount} users found! {state.returnCount > 100 && 'Displaying first 100 results.'}
+                        </div>
+                        <div>
+                            <Pagination
+                                postsPerPage={postsPerPage}
+                                totalPosts={state.returnCount > 100 ? 100 : state.returnCount}
+                                onPageChange={onPageChange}
+                                currentPage={currentPage}
+                            />
+                            <Posts posts={currentPosts} />
+                            <Pagination
+                                postsPerPage={postsPerPage}
+                                totalPosts={state.returnCount > 100 ? 100 : state.returnCount}
+                                onPageChange={onPageChange}
+                                currentPage={currentPage}
+                            />
+                        </div>
+                    </React.Fragment>
                 }
             </div>
         </React.Fragment>

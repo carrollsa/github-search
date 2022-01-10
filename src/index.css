@@ -10,11 +10,11 @@ body {
 
 .app {
     background-color: #FFFFFF;
-    color:#290924;
+    color:#36013F;
 }
 
 .search {
-    background-color: #290924;
+    background-color: #36013F;
     height: 100px;
     align-items: center;
     justify-content: center;
@@ -118,7 +118,7 @@ li {
 .post-list li {
     display: flex;
     align-items: center;
-    margin: 10px;
+    margin: 6px;
 }
 
 .post-list svg {
