@@ -12,6 +12,8 @@ Requirements included:
 * User can see notable information, including description, star/follower count, profile pictures, etc.
 * User can select a search result and be taken to the applicable page on GitHub
 
+<img src="https://github.com/carrollsa/carrollsa_public/blob/main/GithubSearch.jpg">
+
 ---
 ## Table of Contents
 * [Features](https://github.com/carrollsa/github-search/blob/main/README.md#features)
