@@ -32,7 +32,7 @@ function Pagination({ postsPerPage = 10, totalPosts, onPageChange, siblingCount 
                 <li key='left' className={`${currentPage === 1 ? 'disabled' : ''}`}>
                     <FaArrowAltCircleLeft
                         onClick={() => onPageChange('left')}
-                        color='#8859B6'
+                        color='#533273'
                         size={40}
                     />
                 </li>
@@ -44,8 +44,7 @@ function Pagination({ postsPerPage = 10, totalPosts, onPageChange, siblingCount 
                     return (
                         <li
                             key={index}
-                            className={`pagination-item 
-                            ${pageNumber === currentPage ? 'selected' : ''}`}
+                            className={`pagination-item ${pageNumber === currentPage ? 'selected' : ''}`}
                             onClick={() => onPageChange(pageNumber)}>
                                 {pageNumber}
                         </li>
@@ -54,7 +53,7 @@ function Pagination({ postsPerPage = 10, totalPosts, onPageChange, siblingCount 
                 <li key='right' className={`${currentPage === totalPageCount ? 'disabled' : ''}`}>
                     <FaArrowAltCircleRight
                         onClick={() => onPageChange('right')}
-                        color='#8859B6'
+                        color='#533273'
                         size={40}
                     />
                 </li>

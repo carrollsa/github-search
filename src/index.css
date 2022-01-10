@@ -6,7 +6,6 @@ html, body, #app {
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
-
 }
 
 .app {
@@ -21,19 +20,30 @@ body {
     justify-content: center;
 }
 
+.search span {
+    color: white;
+    font-size: 30px;
+    padding: 7px;
+}
+
+.search a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
 .search input {
     padding: 12px 16px;
     border-radius: 25px;
     width: 20%;
     min-width: 150px;
     font-size: 20px;
-    
+    margin: 7px;
 }
 
 .search button {
     border-radius: 25px;
     padding: 12px 16px;
-    margin-left: 7px;
     font-size: 20px;
     font-weight: bold;
 }
@@ -122,6 +132,7 @@ li {
 
 .post-details {
     width: 300px;
+    padding-bottom: 15px;
 }
 .pagination li {
     font-size: 30px;
@@ -130,6 +141,16 @@ li {
     margin: 4px;
     padding: 10px;
     text-align: center
+}
+
+.pagination .selected {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    padding: 8px;
+
+    border: 5px solid #533273;
+    text-align: center;
 }
 
 .disabled {

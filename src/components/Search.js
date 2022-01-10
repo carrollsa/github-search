@@ -2,6 +2,7 @@ import React from 'react'
 import Posts from './Posts'
 import Pagination from './Pagination'
 import { fetchMultipleUsersGQL } from '../utils/api'
+import { GoMarkGithub } from 'react-icons/go'
 
 function Search() {
     const [username, setUsername] = React.useState('')
@@ -81,6 +82,10 @@ function Search() {
         <React.Fragment>
             <div className='app'>
                 <div className='row search'>
+                    <GoMarkGithub size={50} color='FFFFFF'/>
+                    <span>
+                        Search for users via the <a href='https://docs.github.com/en/graphql' target='_blank'>Github API</a>
+                    </span>
                     <input
                         type='text'
                         id='username'
@@ -111,13 +116,13 @@ function Search() {
                 }
                 {state.results &&
                     <div>
-                        <Posts posts={currentPosts} />
                         <Pagination
                             postsPerPage={postsPerPage}
                             totalPosts={state.returnCount > 100 ? 100 : state.returnCount}
                             onPageChange={onPageChange}
                             currentPage={currentPage}
                         />
+                        <Posts posts={currentPosts} />
                     </div>
                 }
             </div>
