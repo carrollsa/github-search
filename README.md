@@ -62,7 +62,7 @@ Requirements included:
 
 ### Visit on Netlify
 
-The app is currently hosted on Netlify and can be found [here](https://stephen-carroll-github-search.netlify.app/)
+The app is currently hosted on Netlify and can be found [here](https://stephen-carroll-github-search.netlify.app/).
 
 ### Local Installation
 
