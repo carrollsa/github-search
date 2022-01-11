@@ -1,10 +1,8 @@
-import {properties} from '../properties'
-
-const GQL_ACCESS_TOKEN = properties.gqlToken
+const GQL_API_KEY = process.env.GQL_API_KEY
 
 /*  Currently only pulls first 100 results, but I included page info to allow for cycling through paginated
     results in the future by modifying query to accept "after: [endcursor]" as a param to search */
-export function fetchMultipleUsersGQL(username) {
+export function fetchMultipleUsersGQL(username) {   
     const query = `
         query fetchUsers($name: String!) {
             search(query: $name, type: USER, first:100) {
@@ -52,11 +50,12 @@ export function fetchMultipleUsersGQL(username) {
 }
 
 function queryFetch(query, variables) {
+    console.log(GQL_API_KEY)
     return fetch('https://api.github.com/graphql', {
         method: 'POST',
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Token ${GQL_ACCESS_TOKEN}`
+            "Authorization": `Token ${GQL_API_KEY}`
         },
         body: JSON.stringify({
             query: query,
