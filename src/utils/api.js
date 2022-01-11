@@ -1,6 +1,6 @@
 import { buildExecutionContext } from "graphql/execution/execute"
 
-const GQL_API_KEY = build.env.GQL_API_KEY
+const GQL_API_KEY = process.env.GQL_API_KEY
 
 
 /*  Currently only pulls first 100 results, but I included page info to allow for cycling through paginated
