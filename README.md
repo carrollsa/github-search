@@ -104,5 +104,5 @@ The app is currently hosted on Netlify and can be found [here](https://stephen-c
 
 ## Credits
 
-* [Tyler McGinnis](https://github.com/tylermcginnis) from UI.dev for teaching me React 
+* [Tyler McGinnis](https://github.com/tylermcginnis) from UI.dev for teaching me React and providing some framework for a few of these components.
 * [FreeCodeCamp](https://www.freecodecamp.org/) and [Traversy Media](https://www.youtube.com/channel/UC29ju8bIPH5as8OGnQzwJyA) for aiding me in understanding implementing paginated frontend results.
