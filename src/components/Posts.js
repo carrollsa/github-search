@@ -84,6 +84,8 @@ function Posts({ posts }) {
                         </li>
                     )
                 }
+                //  Only reached for odd return from Github API that contains an empty node
+                return null
             })}
         </ul >
     )

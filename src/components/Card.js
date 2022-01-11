@@ -5,7 +5,7 @@ function Card({ header, avatar, subheader, href }) {
 
     return (
         <div className='card'>
-            <a className='plain-text' href={href} target='_blank'>
+            <a className='plain-text' href={href} target='_blank' rel="noreferrer">
                 <h4 className='header-lg center-text'>
                     {header}
                 </h4>
