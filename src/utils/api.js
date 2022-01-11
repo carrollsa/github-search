@@ -1,4 +1,4 @@
-const GQL_API_KEY = process.env.GQL_API_KEY
+const GQL_API_KEY = process.env.REACT_APP_GQL_API_KEY
 
 
 /*  Currently only pulls first 100 results, but I included page info to allow for cycling through paginated
