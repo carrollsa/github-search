@@ -9,6 +9,13 @@ function Card({ header, avatar, subheader, href }) {
                 <h4 className='header-lg center-text'>
                     {header}
                 </h4>
+            </a>
+            {subheader &&
+                <div className='header-md'>
+                    {subheader}
+                </div>
+            }
+            <a>
                 {avatar &&
                     <img
                         className='avatar'
@@ -17,11 +24,7 @@ function Card({ header, avatar, subheader, href }) {
                     />
                 }
             </a>
-            {subheader &&
-                <h2 className='center-text'>
-                    {subheader}
-                </h2>
-            }
+
         </div>
     )
 }

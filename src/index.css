@@ -93,6 +93,12 @@ li {
     margin: 20px;
 }
 
+.header-md {
+    font-size: 22px;
+    font-weight: 300;
+    margin: 13px;
+}
+
 .center-text {
     text-align: center;
 }
@@ -118,7 +124,7 @@ li {
 .post-list {
     margin: 20px 0px;
     font-size: 20px;
-    padding: 0 0 0 30px;
+    padding: 0 10px 0 45px;
 }
 
 .post-list li {
@@ -180,5 +186,29 @@ li {
 }
 
 .followers {
-    justify-content: center;
+    padding: 0px 35px 0px 35px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.followers span {
+    font-weight: 400;
+}
+
+/* This works for now but needs adjustment */
+.space-top {
+    margin-top: 65px
+}
+
+.mx-3 {
+    margin: 0px 10px 0px 10px;
+}
+
+.m-2 {
+    margin: 7px
+}
+
+.mr-1 {
+    margin-right: 5px;
 }

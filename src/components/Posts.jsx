@@ -14,27 +14,26 @@ function Posts({ posts }) {
                     const following = post.node.following.totalCount
                     const starredRepos = post.node.starredRepositories.totalCount
 
+                    const subheader =
+                        <div className='row followers m-2 space-around'>
+                            <Tooltip text="Number of followers">
+                                <FaUserFriends className='mr-1' color='#008000' size={30} /><span>{followers}</span>
+                            </Tooltip>
+                            <Tooltip text="Number followed">
+                                <FaUserPlus className='mr-1' color='#AA5D00' size={30} /><span>{following}</span>
+                            </Tooltip>
+                        </div>
+
                     return (
                         <li key={login}>
                             <Card
                                 header={login}
+                                subheader={subheader}
                                 avatar={avatarUrl}
                                 href={url}
                             />
-                            <div className='post-details'>
+                            <div className='post-details space-top'>
                                 <ul className='post-list'>
-                                    <div className='row followers'>
-                                        <Tooltip text="Number of followers">
-                                            <li key={`${login}-followers`}>
-                                                <FaUserFriends color='#008000' size={22} />{followers}
-                                            </li>
-                                        </Tooltip>
-                                        <Tooltip text="Number followed">
-                                        <li key={`${login}-following`}>
-                                                <FaUserPlus color='#AA5D00' size={22} />{following}
-                                            </li>
-                                        </Tooltip>
-                                    </div>
                                     {name &&
                                         <li key={`${login}-${name}`}>
                                             <FaUser color='#DC143C' size={22} />
