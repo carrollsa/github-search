@@ -58,7 +58,13 @@ Requirements included:
 ---
 <a name="installation"/>
 
-## Running locally
+## Running the app
+
+### Visit on Netlify
+
+The app is currently hosted on Netlify and can be found [here](https://stephen-carroll-github-search.netlify.app/)
+
+### Local Installation
 
 1. Clone the repository with `$ git clone https://github.com/carrollsa/github-search`
 2. `cd` into new folder and install dependencies with `npm install`
