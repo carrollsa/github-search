@@ -121,6 +121,11 @@ function Search() {
                         {state.error}
                     </div>
                 }
+                { !state.loading && !state.returnCount && 
+                    <div className='center-text header-lg'>
+                        Enter a username or developer name in the search bar to begin! 
+                    </div>
+                }
                 {state.loading
                     ? <div>
                         <Loading />
