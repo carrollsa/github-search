@@ -15,7 +15,7 @@ function Card({ header, avatar, subheader, href }) {
                     {subheader}
                 </div>
             }
-            <a>
+            <a href={href} target='_blank' rel="noreferrer">
                 {avatar &&
                     <img
                         className='avatar'
