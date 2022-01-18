@@ -34,6 +34,9 @@ export default Card
 Card.propTypes = {
     header: PropTypes.string.isRequired,
     avatar: PropTypes.string,
-    subheader: PropTypes.string,
+    subheader: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object
+    ]),
     href: PropTypes.string
 }
