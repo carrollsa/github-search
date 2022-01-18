@@ -46,12 +46,11 @@ export function fetchMultipleUsersGQL(username) {
             }
         }`
     return (
-        queryFetch(query, {name: username})
+        githubFetch(query, {name: username})
     )
 }
 
-function queryFetch(query, variables) {
-    console.log(GQL_API_KEY)
+function githubFetch(query, variables) {
     return fetch('https://api.github.com/graphql', {
         method: 'POST',
         headers: {
