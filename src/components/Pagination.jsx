@@ -5,13 +5,11 @@ import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa'
 
 //  Combination of a FreeCodeCamp tutorial and some concepts from a YouTube tutorial from TraversyMedia, as well as a few written sources
 function Pagination({ postsPerPage = 10, totalPosts, onPageChange, siblingCount = 1, currentPage, className }) {
-    console.log("rendering")
-    
     const paginationRange = usePagination({
         currentPage: currentPage,
         totalCount: totalPosts,
         siblingCount: siblingCount,
-        pageSize: postsPerPage
+        itemsPerPage: postsPerPage
     })
 
     const totalPageCount = Math.ceil(totalPosts / postsPerPage)

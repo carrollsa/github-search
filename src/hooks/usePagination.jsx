@@ -2,7 +2,7 @@ import React from 'react'
 
 
 //  Heavily borrowed from a FreeCodeCamp tutorial 
-export default function usePagination ({ totalCount, pageSize, siblingCount = 1, currentPage }) {
+export default function usePagination ({ totalCount, itemsPerPage, siblingCount = 1, currentPage }) {
     function range(start, end) {
         let output = []
         for (let i = start; i <= end; i++) {
@@ -12,7 +12,7 @@ export default function usePagination ({ totalCount, pageSize, siblingCount = 1,
     }
     
     const paginationRange = React.useMemo(() => {
-        const totalPageCount = Math.ceil(totalCount / pageSize)
+        const totalPageCount = Math.ceil(totalCount / itemsPerPage)
         const totalPageNumbers = siblingCount + 5
 
         // Show all pages
@@ -50,7 +50,7 @@ export default function usePagination ({ totalCount, pageSize, siblingCount = 1,
             let middleRange = range(leftSiblingIndex, rightSiblingIndex)
             return [firstPageIndex, '...', ...middleRange, '...', lastPageIndex]
         }
-    }, [totalCount, pageSize, siblingCount, currentPage])
+    }, [totalCount, itemsPerPage, siblingCount, currentPage])
 
     return paginationRange
 }
