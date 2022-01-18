@@ -24,6 +24,9 @@ function Search() {
     const indexOfFirstPost = indexOfLastPost - postsPerPage
     const currentPosts = state.results ? state.results.slice(indexOfFirstPost, indexOfLastPost) : null
 
+    // Choose singular or plural user(s)
+    const userOrUsers = state.returnCount === 1 ? 'user' : 'users'
+
     // Change page in paginated search results
     const onPageChange = (pageNumber) => {
         if (pageNumber === 'left') {
@@ -133,7 +136,7 @@ function Search() {
                     : state.returnCount &&
                     <React.Fragment>
                         <div className='center-text header-lg'>
-                            {state.returnCount} users found! {state.returnCount > 100 && 'Displaying first 100 results.'}
+                            {state.returnCount} {userOrUsers} found! {state.returnCount > 100 && 'Displaying first 100 results.'}
                         </div>
                         <div>
                             {PaginationComponent}
